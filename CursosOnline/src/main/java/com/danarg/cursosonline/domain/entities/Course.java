@@ -12,24 +12,23 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "cursos")
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String name;
-    private String email;
-    private String password;
-    private String role;
-
-    //foreign key
-    @ManyToOne
-    @JoinColumn(name = "curso_id")
-    private Course Course;
+    private String titulo;
+    private String descripcion;
+    private boolean active;
     //fecha de inicio de curso
     private Date start_date;
     //fecha de fin de curso
     private Date end_date;
+
+    //foreign key
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     //tarea
     @ManyToOne
@@ -41,6 +40,7 @@ public class User {
     private Date end_homework;
     //calificacion de tarea
     private int score;
+
 
 
 }
